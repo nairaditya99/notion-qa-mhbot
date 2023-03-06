@@ -28,7 +28,7 @@ if "past" not in st.session_state:
 
 
 def get_text():
-    input_text = st.text_input("You: ", "Hello, how are you?", key="input")
+    input_text = st.text_input("You: ", key="input")
     return input_text
 
 
@@ -36,7 +36,7 @@ user_input = get_text()
 
 if user_input:
     result = chain({"question": user_input})
-    output = f"{result['answer']}"
+    output = {result['answer']}
 
     st.session_state.past.append(user_input)
     st.session_state.generated.append(output)
