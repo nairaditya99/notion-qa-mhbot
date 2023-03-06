@@ -36,7 +36,7 @@ user_input = get_text()
 
 if user_input:
     result = chain({"question": user_input})
-    output = {result['answer']}
+    output = f"{result['answer']}"
 
     st.session_state.past.append(user_input)
     st.session_state.generated.append(output)
