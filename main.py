@@ -5,6 +5,7 @@ import faiss
 from langchain import OpenAI
 from langchain.chains import VectorDBQAWithSourcesChain
 import pickle
+import ingest
 
 # Load the LangChain.
 index = faiss.read_index("docs.index")
