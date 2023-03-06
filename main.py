@@ -13,7 +13,7 @@ with open("faiss_store.pkl", "rb") as f:
     store = pickle.load(f)
 
 store.index = index
-chain = VectorDBQAWithSourcesChain.from_llm(llm=OpenAI(temperature=0), vectorstore=store)
+chain = VectorDBQAWithSourcesChain.from_llm(llm=OpenAI(temperature=0.7), vectorstore=store)
 
 
 # From here down is all the StreamLit UI.
@@ -36,7 +36,7 @@ user_input = get_text()
 
 if user_input:
     result = chain({"question": user_input})
-    output = f"Answer: {result['answer']}\nSources: {result['sources']}"
+    output = f"Answer: {result['answer']}}"
 
     st.session_state.past.append(user_input)
     st.session_state.generated.append(output)
