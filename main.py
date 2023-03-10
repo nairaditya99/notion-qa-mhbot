@@ -14,7 +14,7 @@ with open("faiss_store.pkl", "rb") as f:
     store = pickle.load(f)
 
 store.index = index
-chain = VectorDBQA.from_llm(llm=ChatOpenAI(), chain_type="stuff", vectorstore=store)
+chain = VectorDBQA.from_llm(llm=OpenAI(), chain_type="stuff", vectorstore=store)
 
 # From here down is all the StreamLit UI.
 st.set_page_config(page_title="AURA the mental health bot", page_icon=":robot:")
