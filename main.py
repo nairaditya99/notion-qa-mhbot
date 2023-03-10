@@ -3,7 +3,7 @@ import streamlit as st
 from streamlit_chat import message
 import faiss
 from langchain import OpenAI
-from langchain.chains import VectorDBQAWithSourcesChain
+from langchain.chains import VectorDBQA
 import pickle
 import ingest
 
@@ -14,7 +14,7 @@ with open("faiss_store.pkl", "rb") as f:
     store = pickle.load(f)
 
 store.index = index
-chain = VectorDBQAWithSourcesChain.from_llm(llm=OpenAI(temperature=0.7), vectorstore=store)
+chain = VectorDBQA.from_chain_type(llm=ChatOpenAI(temperature=0.7), chain_type="stuff", vectorstore=store)
 
 
 # From here down is all the StreamLit UI.
